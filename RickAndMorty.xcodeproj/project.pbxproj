@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		522626042A508AB800DB0963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626032A508AB800DB0963 /* AppDelegate.swift */; };
 		522626062A508AB800DB0963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626052A508AB800DB0963 /* SceneDelegate.swift */; };
-		522626082A508AB800DB0963 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626072A508AB800DB0963 /* ViewController.swift */; };
 		5226260B2A508AB800DB0963 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522626092A508AB800DB0963 /* Main.storyboard */; };
 		5226260D2A508AB800DB0963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5226260C2A508AB800DB0963 /* Assets.xcassets */; };
 		522626102A508AB800DB0963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5226260E2A508AB800DB0963 /* LaunchScreen.storyboard */; };
 		5226261B2A508AB900DB0963 /* RickAndMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5226261A2A508AB900DB0963 /* RickAndMortyTests.swift */; };
 		522626252A508AB900DB0963 /* RickAndMortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626242A508AB900DB0963 /* RickAndMortyUITests.swift */; };
 		522626272A508AB900DB0963 /* RickAndMortyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626262A508AB900DB0963 /* RickAndMortyUITestsLaunchTests.swift */; };
+		522626342A508EEE00DB0963 /* CharactersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626332A508EEE00DB0963 /* CharactersTableVC.swift */; };
+		522626362A5090BF00DB0963 /* CharacterInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626352A5090BF00DB0963 /* CharacterInfoVC.swift */; };
+		522626382A50948600DB0963 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626372A50948600DB0963 /* CharacterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,6 @@
 		522626002A508AB800DB0963 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		522626032A508AB800DB0963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		522626052A508AB800DB0963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		522626072A508AB800DB0963 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5226260A2A508AB800DB0963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5226260C2A508AB800DB0963 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5226260F2A508AB800DB0963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		522626202A508AB900DB0963 /* RickAndMortyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		522626242A508AB900DB0963 /* RickAndMortyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITests.swift; sourceTree = "<group>"; };
 		522626262A508AB900DB0963 /* RickAndMortyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		522626332A508EEE00DB0963 /* CharactersTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableVC.swift; sourceTree = "<group>"; };
+		522626352A5090BF00DB0963 /* CharacterInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoVC.swift; sourceTree = "<group>"; };
+		522626372A50948600DB0963 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 			children = (
 				522626032A508AB800DB0963 /* AppDelegate.swift */,
 				522626052A508AB800DB0963 /* SceneDelegate.swift */,
-				522626072A508AB800DB0963 /* ViewController.swift */,
+				522626332A508EEE00DB0963 /* CharactersTableVC.swift */,
+				522626372A50948600DB0963 /* CharacterTableViewCell.swift */,
+				522626352A5090BF00DB0963 /* CharacterInfoVC.swift */,
 				522626092A508AB800DB0963 /* Main.storyboard */,
 				5226260C2A508AB800DB0963 /* Assets.xcassets */,
 				5226260E2A508AB800DB0963 /* LaunchScreen.storyboard */,
@@ -258,9 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				522626082A508AB800DB0963 /* ViewController.swift in Sources */,
 				522626042A508AB800DB0963 /* AppDelegate.swift in Sources */,
 				522626062A508AB800DB0963 /* SceneDelegate.swift in Sources */,
+				522626382A50948600DB0963 /* CharacterTableViewCell.swift in Sources */,
+				522626362A5090BF00DB0963 /* CharacterInfoVC.swift in Sources */,
+				522626342A508EEE00DB0963 /* CharactersTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

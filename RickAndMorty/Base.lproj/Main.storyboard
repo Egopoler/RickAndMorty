@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -175,25 +174,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NzT-xU-VSg">
-                                                <rect key="frame" x="20" y="25.333333333333371" width="260" height="30"/>
-                                                <menu key="menu" id="uzJ-zs-bw2">
-                                                    <children>
-                                                        <command title="alive" id="HlM-TN-w5x"/>
-                                                        <command title="dead" id="DJ2-Ub-3ni"/>
-                                                        <command title="unknown" id="wAk-m7-NV2"/>
-                                                    </children>
-                                                </menu>
-                                                <state key="normal" title="Button"/>
-                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dN-Yu-idE">
+                                                <rect key="frame" x="20" y="25.333333333333371" width="260" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="NzT-xU-VSg" firstAttribute="leading" secondItem="W2K-2Q-ur8" secondAttribute="leading" constant="20" id="8i7-fF-6mB"/>
-                                            <constraint firstAttribute="trailing" secondItem="NzT-xU-VSg" secondAttribute="trailing" constant="20" id="PTI-tB-wWg"/>
+                                            <constraint firstItem="8dN-Yu-idE" firstAttribute="top" secondItem="lsz-F5-aEM" secondAttribute="bottom" id="P32-4W-T3D"/>
                                             <constraint firstItem="lsz-F5-aEM" firstAttribute="leading" secondItem="W2K-2Q-ur8" secondAttribute="leading" constant="20" id="RGE-fA-gfE"/>
+                                            <constraint firstAttribute="trailing" secondItem="8dN-Yu-idE" secondAttribute="trailing" constant="20" id="YVQ-xJ-TeX"/>
                                             <constraint firstItem="lsz-F5-aEM" firstAttribute="top" secondItem="W2K-2Q-ur8" secondAttribute="top" constant="5" id="cgH-VK-be2"/>
-                                            <constraint firstItem="NzT-xU-VSg" firstAttribute="top" secondItem="lsz-F5-aEM" secondAttribute="bottom" id="qYc-K0-x6V"/>
+                                            <constraint firstItem="8dN-Yu-idE" firstAttribute="leading" secondItem="W2K-2Q-ur8" secondAttribute="leading" constant="20" id="ubQ-1a-GGO"/>
                                             <constraint firstAttribute="trailing" secondItem="lsz-F5-aEM" secondAttribute="trailing" constant="20" id="zOj-Xz-REW"/>
                                         </constraints>
                                     </view>
@@ -240,6 +234,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uUH-Ud-G6h"/>
+                    <connections>
+                        <outlet property="characterImage" destination="Q1c-32-HNF" id="pNf-vm-DEs"/>
+                        <outlet property="genderLabel" destination="cnw-DM-UPR" id="Vbh-NX-xBv"/>
+                        <outlet property="locationTextField" destination="XF0-s2-U4t" id="8ys-nv-VDj"/>
+                        <outlet property="nameTextField" destination="d6q-1R-UUz" id="5on-Is-jz4"/>
+                        <outlet property="speciesLabel" destination="MBd-E6-NH4" id="3Hg-9o-OIh"/>
+                        <outlet property="statusLabel" destination="8dN-Yu-idE" id="Z3k-8p-piZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfz-zx-0Xo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

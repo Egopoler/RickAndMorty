@@ -15,6 +15,9 @@ class CharacterInfoVC: UIViewController {
     @IBOutlet weak var speciesLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     var character: Character?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let realCharacter = character ?? Character(id: -1, name: "Anonim", status: Character.Status.unknown, species: "unknown", gender: Character.Gender.unknown, location: "unknowm", image: "")
@@ -48,17 +51,26 @@ class CharacterInfoVC: UIViewController {
         speciesLabel.text = realCharacter.species
         
         
+        
+        
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func NameWasChanged(_ sender: UITextField) {
+        
+        guard let realCharacter = character else
+        { return }
+        
+        
+        
+        let newCharacter = Character(id: realCharacter.id, name: nameTextField.text!, status: realCharacter.status, species: realCharacter.species, gender: realCharacter.gender, location: realCharacter.location, image: realCharacter.image)
+        
+        CharacterTableVC
+        
     }
-    */
-
+    
+    
+    
 }

@@ -31,6 +31,18 @@ class CharactersTableVC: UIViewController {
         let destVC = segue.destination as! CharacterInfoVC
         destVC.character = sender as? Character
     }
+    
+    
+    // replace all characters with some ID with new one
+    func updateSomeCharacter(_ newCharacter: Character) {
+        
+        for i in 0..<data.count {
+            if newCharacter.id == data[i].id {
+                data[i] = newCharacter
+            }
+        }
+    }
+    
 }
 
 

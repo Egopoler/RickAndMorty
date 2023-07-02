@@ -27,11 +27,11 @@ class CharactersTableVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destVC = segue.destination as! CharacterInfoVC
-        destVC.character = sender as? Character
-        print(CharactersTableVC.data[0].name)
+        if let destVC = segue.destination as? CharacterInfoVC {
+            destVC.character = sender as? Character
+            destVC.delegate = self
+        }
     }
-    
     
     // replace all characters with some ID with new one
     func updateSomeCharacter(_ newCharacter: Character) {
@@ -70,4 +70,10 @@ extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     
+}
+extension CharactersTableVC: CharacterInfoDelegate {
+    func characterInfoDidUpdate(_ character: Character) {
+        updateSomeCharacter(character)
+        tableView.reloadData()
+    }
 }

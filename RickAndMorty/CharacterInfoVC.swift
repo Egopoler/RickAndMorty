@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol CharacterInfoDelegate: AnyObject {
+    func characterInfoDidUpdate(_ character: Character)
+}
 class CharacterInfoVC: UIViewController {
     @IBOutlet weak var characterImage: UIImageView!
     @IBOutlet weak var locationTextField: UITextField!
@@ -14,6 +16,7 @@ class CharacterInfoVC: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var speciesLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    weak var delegate: CharacterInfoDelegate?
     var character: Character?
     
     
@@ -81,7 +84,7 @@ class CharacterInfoVC: UIViewController {
         }
         
         characterTableVC.updateSomeCharacter(newCharacter)
-        
+        delegate?.characterInfoDidUpdate(newCharacter)
     }
     
     @IBAction func LocationWasChanged(_ sender: UITextField) {
@@ -100,6 +103,7 @@ class CharacterInfoVC: UIViewController {
         }
         
         characterTableVC.updateSomeCharacter(newCharacter)
+        delegate?.characterInfoDidUpdate(newCharacter)
     }
     
     

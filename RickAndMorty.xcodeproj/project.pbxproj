@@ -18,6 +18,8 @@
 		522626342A508EEE00DB0963 /* CharactersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626332A508EEE00DB0963 /* CharactersTableVC.swift */; };
 		522626362A5090BF00DB0963 /* CharacterInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626352A5090BF00DB0963 /* CharacterInfoVC.swift */; };
 		522626382A50948600DB0963 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626372A50948600DB0963 /* CharacterTableViewCell.swift */; };
+		5226263B2A51B18E00DB0963 /* morty1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5226263A2A51B18E00DB0963 /* morty1.png */; };
+		5226263D2A51B4E600DB0963 /* morty2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5226263C2A51B4E600DB0963 /* morty2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		522626332A508EEE00DB0963 /* CharactersTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableVC.swift; sourceTree = "<group>"; };
 		522626352A5090BF00DB0963 /* CharacterInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoVC.swift; sourceTree = "<group>"; };
 		522626372A50948600DB0963 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		5226263A2A51B18E00DB0963 /* morty1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = morty1.png; path = ../../../../../../../var/folders/nt/ql8lzvx52bg19b1g9dst1qkr0000gn/T/TemporaryItems/NSIRD_screencaptureui_Eu0K1n/morty1.png; sourceTree = "<group>"; };
+		5226263C2A51B4E600DB0963 /* morty2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = morty2.png; path = ../../../../../Desktop/morty2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		522626022A508AB800DB0963 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				522626392A51B12800DB0963 /* Photos */,
 				522626032A508AB800DB0963 /* AppDelegate.swift */,
 				522626052A508AB800DB0963 /* SceneDelegate.swift */,
 				522626332A508EEE00DB0963 /* CharactersTableVC.swift */,
@@ -131,6 +136,15 @@
 				522626262A508AB900DB0963 /* RickAndMortyUITestsLaunchTests.swift */,
 			);
 			path = RickAndMortyUITests;
+			sourceTree = "<group>";
+		};
+		522626392A51B12800DB0963 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				5226263C2A51B4E600DB0963 /* morty2.png */,
+				5226263A2A51B18E00DB0963 /* morty1.png */,
+			);
+			path = Photos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +251,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5226263B2A51B18E00DB0963 /* morty1.png in Resources */,
 				522626102A508AB800DB0963 /* LaunchScreen.storyboard in Resources */,
 				5226260D2A508AB800DB0963 /* Assets.xcassets in Resources */,
 				5226260B2A508AB800DB0963 /* Main.storyboard in Resources */,
+				5226263D2A51B4E600DB0963 /* morty2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

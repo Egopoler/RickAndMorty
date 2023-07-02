@@ -9,9 +9,9 @@ import UIKit
 
 class CharactersTableVC: UIViewController {
     
-    private var data: [Character] = [
-        Character(id: 1, name: "Morti", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "-"),
-        Character(id: 2, name: "Morti2", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "-")
+    private static var data: [Character] = [
+        Character(id: 1, name: "Morti", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "morty1"),
+        Character(id: 2, name: "Morti2", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "morty2")
     ]
     
     
@@ -21,7 +21,6 @@ class CharactersTableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         tableView.dataSource = self
 
         // Do any additional setup after loading the view.
@@ -30,15 +29,16 @@ class CharactersTableVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC = segue.destination as! CharacterInfoVC
         destVC.character = sender as? Character
+        print(CharactersTableVC.data[0].name)
     }
     
     
     // replace all characters with some ID with new one
     func updateSomeCharacter(_ newCharacter: Character) {
         
-        for i in 0..<data.count {
-            if newCharacter.id == data[i].id {
-                data[i] = newCharacter
+        for i in 0..<CharactersTableVC.data.count {
+            if newCharacter.id == CharactersTableVC.data[i].id {
+                CharactersTableVC.data[i] = newCharacter
             }
         }
     }
@@ -48,24 +48,24 @@ class CharactersTableVC: UIViewController {
 
 extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return CharactersTableVC.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let characterCell = tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell") as? CharacterTableViewCell
         else { return UITableViewCell() }
+        print(indexPath)
         
-        characterCell.setUpData(data[indexPath.row])
+        characterCell.setUpData(CharactersTableVC.data[indexPath.row])
         
         
         
         return characterCell
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var character: Character = data[indexPath.row]
+        var character: Character = CharactersTableVC.data[indexPath.row]
         performSegue(withIdentifier: "ToCharacterInfoVC", sender: character)
     }
 

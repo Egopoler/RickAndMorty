@@ -50,6 +50,12 @@ class CharacterInfoVC: UIViewController {
         
         speciesLabel.text = realCharacter.species
         
+        if let filePath = Bundle.main.path(forResource: realCharacter.image, ofType: "png") {
+            let fileURL = URL(fileURLWithPath: filePath)
+            let image = UIImage(contentsOfFile: fileURL.path)
+            characterImage.image = image
+        }
+        
         
         
         
@@ -65,12 +71,36 @@ class CharacterInfoVC: UIViewController {
         
         
         
-        let newCharacter = Character(id: realCharacter.id, name: nameTextField.text!, status: realCharacter.status, species: realCharacter.species, gender: realCharacter.gender, location: realCharacter.location, image: realCharacter.image)
+        let newCharacter = Character(id: realCharacter.id, name: nameTextField.text!, status: realCharacter.status, species: realCharacter.species, gender: realCharacter.gender, location: locationTextField.text!, image: realCharacter.image)
         
-        CharacterTableVC
+        
+        guard let characterTableVC = storyboard?.instantiateViewController(withIdentifier: "CharactersTableVC") as? CharactersTableVC else
+        {
+            print("error")
+            return
+        }
+        
+        characterTableVC.updateSomeCharacter(newCharacter)
         
     }
     
+    @IBAction func LocationWasChanged(_ sender: UITextField) {
+        guard let realCharacter = character else
+        { return }
+        
+        
+        
+        let newCharacter = Character(id: realCharacter.id, name: nameTextField.text!, status: realCharacter.status, species: realCharacter.species, gender: realCharacter.gender, location: locationTextField.text!, image: realCharacter.image)
+        
+        
+        guard let characterTableVC = storyboard?.instantiateViewController(withIdentifier: "CharactersTableVC") as? CharactersTableVC else
+        {
+            print("error")
+            return
+        }
+        
+        characterTableVC.updateSomeCharacter(newCharacter)
+    }
     
     
 }

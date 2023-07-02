@@ -8,7 +8,7 @@
 import UIKit
 
 class CharacterInfoVC: UIViewController {
-
+    var character: Character?
     override func viewDidLoad() {
         super.viewDidLoad()
 

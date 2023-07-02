@@ -10,7 +10,8 @@ import UIKit
 class CharactersTableVC: UIViewController {
     
     private var data: [Character] = [
-        Character(id: 1, name: "Morti", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "-")
+        Character(id: 1, name: "Morti", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "-"),
+        Character(id: 2, name: "Morti2", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "-")
     ]
     
     
@@ -26,7 +27,10 @@ class CharactersTableVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! CharacterInfoVC
+        destVC.character = sender as? Character
+    }
 }
 
 
@@ -49,7 +53,8 @@ extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ToCharacterInfoVC", sender: nil)
+        var character: Character = data[indexPath.row]
+        performSegue(withIdentifier: "ToCharacterInfoVC", sender: character)
     }
 
     

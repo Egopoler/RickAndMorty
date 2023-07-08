@@ -13,11 +13,11 @@ protocol CharacterInfoDelegate: AnyObject {
 }
 class CharacterInfoVC: UIViewController {
     @IBOutlet weak var characterImage: UIImageView!
-    @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var speciesLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     weak var delegate: CharacterInfoDelegate?
     var character: CharacterResponseModel?
     
@@ -28,9 +28,9 @@ class CharacterInfoVC: UIViewController {
         
         guard let realCharacter = character else { return }
         
-        nameTextField.text = realCharacter.name
+        nameLabel.text = realCharacter.name
         genderLabel.text = realCharacter.gender
-        locationTextField.text = realCharacter.location.name
+        locationLabel.text = realCharacter.location.name
         statusLabel.text = realCharacter.status
         speciesLabel.text = realCharacter.species
 

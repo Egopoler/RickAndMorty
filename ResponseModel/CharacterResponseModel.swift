@@ -1,35 +1,38 @@
-//
-//  CharacterResponseModel.swift
-//  RickAndMorty
-//
-//  Created by MacBook Pro on 08.07.2023.
-//
-
 import Foundation
 
-struct CharacterResponseModel: Codable {
-    enum Status: String, Codable {
-        case alive = "alive"
-        case dead = "dead"
-        case unknown = "unknown"
-    }
-    
-    enum Gender: String, Codable {
-        case female = "female"
-        case male = "male"
-        case genderless = "genderless"
-        case unknown = "unknown"
-    }
+struct APIResponse: Codable {
+    let info: Info
+    let results: [CharacterResponseModel]
+}
 
+struct Info: Codable {
+    let count: Int
+    let pages: Int
+    let next: String?
+    let prev: String?
+}
+
+struct CharacterResponseModel: Codable {
     let id: Int
     let name: String
-    let status: Status
+    let status: String
     let species: String
-    let gender: Gender
-    let location: String
+    let type: String
+    let gender: String
+    let origin: Origin
+    let location: Location
     let image: String
-    
-    enum CodingKeys: String, CodingKey {
-            case id, name, status, species, location, gender, image
-        }
+    let episode: [String]
+    let url: String
+    let created: String
+}
+
+struct Origin: Codable {
+    let name: String
+    let url: String
+}
+
+struct Location: Codable {
+    let name: String
+    let url: String
 }

@@ -7,12 +7,20 @@
 
 import UIKit
 
+import Moya
+
 class CharactersTableVC: UIViewController {
     
-    private static var data: [Character] = [
-        Character(id: 1, name: "Morti", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "morty2"),
-        Character(id: 2, name: "Morti2", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "morty2")
-    ]
+//    private static var data1: [Character] = [
+//        Character(id: 1, name: "Morti", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "morty1"),
+//        Character(id: 2, name: "Morti2", status: Character.Status.alive, species: "Human", gender: Character.Gender.male, location: "Earth", image: "morty2")
+//    ]
+    
+    
+    private let manager: NetworkManagerProtocol = NetworkManger()
+    private static var characters: [CharacterResponseModel] = []
+    
+
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,31 +32,35 @@ class CharactersTableVC: UIViewController {
         tableView.dataSource = self
 
         // Do any additional setup after loading the view.
+        manager.fetchCharacters { result in
+            switch result {
+            case let .success(response):
+                CharactersTableVC.characters = response.results
+                self.tableView.reloadData()  // and update table view
+            case let .failure(error):
+                print(error)
+            }
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destVC = segue.destination as? CharacterInfoVC {
-            destVC.character = sender as? Character
+            destVC.character = sender as? CharacterResponseModel
             destVC.delegate = self
         }
     }
     
-    // replace all characters with some ID with new one
-    func updateSomeCharacter(_ newCharacter: Character) {
-        
-        for i in 0..<CharactersTableVC.data.count {
-            if newCharacter.id == CharactersTableVC.data[i].id {
-                CharactersTableVC.data[i] = newCharacter
-            }
-        }
-    }
+    
     
 }
 
 
 extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CharactersTableVC.data.count
+        
+        return CharactersTableVC.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +69,7 @@ extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
         else { return UITableViewCell() }
         print(indexPath)
         
-        characterCell.setUpData(CharactersTableVC.data[indexPath.row])
+        characterCell.setUpData(CharactersTableVC.characters[indexPath.row])
         
         
         
@@ -65,15 +77,17 @@ extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var character: Character = CharactersTableVC.data[indexPath.row]
+        var character: CharacterResponseModel = CharactersTableVC.characters[indexPath.row]
         performSegue(withIdentifier: "ToCharacterInfoVC", sender: character)
     }
 
     
 }
+
+
 extension CharactersTableVC: CharacterInfoDelegate {
-    func characterInfoDidUpdate(_ character: Character) {
-        updateSomeCharacter(character)
+    func characterInfoDidUpdate(_ character: CharacterResponseModel) {
+        // updateSomeCharacter(character)
         tableView.reloadData()
     }
 }

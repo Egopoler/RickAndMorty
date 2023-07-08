@@ -7,28 +7,6 @@
 
 import UIKit
 
-struct Character {
-    enum Status {
-        case alive
-        case dead
-        case unknown
-    }
-    
-    enum Gender {
-        case female
-        case male
-        case genderless
-        case unknown
-    }
-
-    let id: Int
-    let name: String
-    let status: Status
-    let species: String
-    let gender: Gender
-    let location: String
-    let image: String
-}
 
 
 final class CharacterTableViewCell: UITableViewCell {
@@ -47,7 +25,7 @@ final class CharacterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpData(_ data: Character) {
+    func setUpData(_ data: CharacterResponseModel) {
         self.characterName.text = data.name
     }
     

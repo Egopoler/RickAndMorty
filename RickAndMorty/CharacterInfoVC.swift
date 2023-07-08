@@ -6,8 +6,10 @@
 //
 
 import UIKit
+
+
 protocol CharacterInfoDelegate: AnyObject {
-    func characterInfoDidUpdate(_ character: Character)
+    func characterInfoDidUpdate(_ character: CharacterResponseModel)
 }
 class CharacterInfoVC: UIViewController {
     @IBOutlet weak var characterImage: UIImageView!
@@ -17,93 +19,47 @@ class CharacterInfoVC: UIViewController {
     @IBOutlet weak var speciesLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     weak var delegate: CharacterInfoDelegate?
-    var character: Character?
+    var character: CharacterResponseModel?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realCharacter = character ?? Character(id: -1, name: "Anonim", status: Character.Status.unknown, species: "unknown", gender: Character.Gender.unknown, location: "unknowm", image: "")
         
-        // Do any additional setup after loading the view.
+        guard let realCharacter = character else { return }
         
         nameTextField.text = realCharacter.name
-        
-        switch realCharacter.gender {
-        case .male:
-            genderLabel.text = "Male"
-        case .female:
-            genderLabel.text = "Female"
-        case .genderless:
-            genderLabel.text = "Genderless"
-        case .unknown:
-            genderLabel.text = "Unknown"
-        }
-        
-        locationTextField.text = realCharacter.location
-        
-        switch realCharacter.status {
-        case .alive:
-            statusLabel.text = "Alive"
-        case .dead:
-            statusLabel.text = "Dead"
-        case .unknown:
-            statusLabel.text = "Unknown"
-        }
-        
+        genderLabel.text = realCharacter.gender
+        locationTextField.text = realCharacter.location.name
+        statusLabel.text = realCharacter.status
         speciesLabel.text = realCharacter.species
-        
-        if let filePath = Bundle.main.path(forResource: realCharacter.image, ofType: "png") {
-            let fileURL = URL(fileURLWithPath: filePath)
-            let image = UIImage(contentsOfFile: fileURL.path)
-            characterImage.image = image
-        }
-        
-        
-        
-        
-        
-    }
-    
 
-    
-    @IBAction func NameWasChanged(_ sender: UITextField) {
-        
-        guard let realCharacter = character else
-        { return }
-        
-        
-        
-        let newCharacter = Character(id: realCharacter.id, name: nameTextField.text!, status: realCharacter.status, species: realCharacter.species, gender: realCharacter.gender, location: locationTextField.text!, image: realCharacter.image)
-        
-        
-        guard let characterTableVC = storyboard?.instantiateViewController(withIdentifier: "CharactersTableVC") as? CharactersTableVC else
-        {
-            print("error")
-            return
+        // Assuming that you are receiving a URL string for the image
+        if let imageUrl = URL(string: realCharacter.image) {
+            DispatchQueue.global(qos: .background).async {
+                if let imageUrl = URL(string: realCharacter.image) {
+                    self.downloadImage(from: imageUrl)
+                } else {
+                    print("Invalid URL for the image")
+                }
+            }
+        } else {
+            print("Invalid URL for the image")
         }
-        
-        characterTableVC.updateSomeCharacter(newCharacter)
-        delegate?.characterInfoDidUpdate(newCharacter)
     }
     
-    @IBAction func LocationWasChanged(_ sender: UITextField) {
-        guard let realCharacter = character else
-        { return }
-        
-        
-        
-        let newCharacter = Character(id: realCharacter.id, name: nameTextField.text!, status: realCharacter.status, species: realCharacter.species, gender: realCharacter.gender, location: locationTextField.text!, image: realCharacter.image)
-        
-        
-        guard let characterTableVC = storyboard?.instantiateViewController(withIdentifier: "CharactersTableVC") as? CharactersTableVC else
-        {
-            print("error")
-            return
-        }
-        
-        characterTableVC.updateSomeCharacter(newCharacter)
-        delegate?.characterInfoDidUpdate(newCharacter)
+    func downloadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error downloading image: \(error)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                let downloadedImage = UIImage(data: data)
+                self.characterImage.image = downloadedImage
+            }
+        }.resume()
     }
     
     

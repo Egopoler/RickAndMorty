@@ -19,7 +19,7 @@ class CharacterInfoVC: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     weak var delegate: CharacterInfoDelegate?
-    var character: CharacterResponseModel?
+    var character: RaMCharacter?
     
     
     
@@ -30,14 +30,14 @@ class CharacterInfoVC: UIViewController {
         
         nameLabel.text = realCharacter.name
         genderLabel.text = realCharacter.gender
-        locationLabel.text = realCharacter.location.name
+        locationLabel.text = realCharacter.location
         statusLabel.text = realCharacter.status
         speciesLabel.text = realCharacter.species
 
         // Assuming that you are receiving a URL string for the image
-        if let imageUrl = URL(string: realCharacter.image) {
+        if let imageUrl = URL(string: realCharacter.image!) {
             DispatchQueue.global(qos: .background).async {
-                if let imageUrl = URL(string: realCharacter.image) {
+                if let imageUrl = URL(string: realCharacter.image!) {
                     self.downloadImage(from: imageUrl)
                 } else {
                     print("Invalid URL for the image")

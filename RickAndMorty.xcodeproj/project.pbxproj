@@ -21,6 +21,10 @@
 		522626342A508EEE00DB0963 /* CharactersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626332A508EEE00DB0963 /* CharactersTableVC.swift */; };
 		522626362A5090BF00DB0963 /* CharacterInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626352A5090BF00DB0963 /* CharacterInfoVC.swift */; };
 		522626382A50948600DB0963 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522626372A50948600DB0963 /* CharacterTableViewCell.swift */; };
+		52630C762A5C56D10013D71F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52630C742A5C56D10013D71F /* Model.xcdatamodeld */; };
+		52630C782A5C5A850013D71F /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52630C772A5C5A850013D71F /* PersistentContainer.swift */; };
+		52630C7E2A5C61F50013D71F /* RaMCharacter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52630C7D2A5C61F50013D71F /* RaMCharacter+CoreDataProperties.swift */; };
+		52630C802A5C61FA0013D71F /* RaMCharacter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52630C7F2A5C61FA0013D71F /* RaMCharacter+CoreDataClass.swift */; };
 		5264E7E42A598E2C00FDC362 /* CharacterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264E7E32A598E2C00FDC362 /* CharacterResponseModel.swift */; };
 		5264E7E72A598E7A00FDC362 /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264E7E62A598E7A00FDC362 /* APITarget.swift */; };
 		5264E7E92A598EB100FDC362 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264E7E82A598EB100FDC362 /* NetworkManager.swift */; };
@@ -62,6 +66,10 @@
 		522626332A508EEE00DB0963 /* CharactersTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableVC.swift; sourceTree = "<group>"; };
 		522626352A5090BF00DB0963 /* CharacterInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoVC.swift; sourceTree = "<group>"; };
 		522626372A50948600DB0963 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		52630C752A5C56D10013D71F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		52630C772A5C5A850013D71F /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		52630C7D2A5C61F50013D71F /* RaMCharacter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RaMCharacter+CoreDataProperties.swift"; path = "Services/RaMCharacter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		52630C7F2A5C61FA0013D71F /* RaMCharacter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RaMCharacter+CoreDataClass.swift"; path = "/Users/macbookpro/Documents/forXCode/RickAndMorty/RaMCharacter+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		5264E7E32A598E2C00FDC362 /* CharacterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseModel.swift; sourceTree = "<group>"; };
 		5264E7E62A598E7A00FDC362 /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		5264E7E82A598EB100FDC362 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -104,6 +112,8 @@
 		522625F72A508AB800DB0963 = {
 			isa = PBXGroup;
 			children = (
+				52630C7F2A5C61FA0013D71F /* RaMCharacter+CoreDataClass.swift */,
+				52630C7D2A5C61F50013D71F /* RaMCharacter+CoreDataProperties.swift */,
 				5264E7E52A598E3F00FDC362 /* Services */,
 				5264E7E22A598DF700FDC362 /* ResponseModel */,
 				522626022A508AB800DB0963 /* RickAndMorty */,
@@ -130,8 +140,10 @@
 			children = (
 				5264E7EA2A598F7000FDC362 /* Photos */,
 				522626032A508AB800DB0963 /* AppDelegate.swift */,
+				52630C772A5C5A850013D71F /* PersistentContainer.swift */,
 				522626052A508AB800DB0963 /* SceneDelegate.swift */,
 				522626332A508EEE00DB0963 /* CharactersTableVC.swift */,
+				52630C742A5C56D10013D71F /* Model.xcdatamodeld */,
 				522626372A50948600DB0963 /* CharacterTableViewCell.swift */,
 				522626352A5090BF00DB0963 /* CharacterInfoVC.swift */,
 				522626092A508AB800DB0963 /* Main.storyboard */,
@@ -447,9 +459,13 @@
 			files = (
 				5264E7E42A598E2C00FDC362 /* CharacterResponseModel.swift in Sources */,
 				522626042A508AB800DB0963 /* AppDelegate.swift in Sources */,
+				52630C782A5C5A850013D71F /* PersistentContainer.swift in Sources */,
 				522626062A508AB800DB0963 /* SceneDelegate.swift in Sources */,
+				52630C802A5C61FA0013D71F /* RaMCharacter+CoreDataClass.swift in Sources */,
+				52630C7E2A5C61F50013D71F /* RaMCharacter+CoreDataProperties.swift in Sources */,
 				522626382A50948600DB0963 /* CharacterTableViewCell.swift in Sources */,
 				5264E7E92A598EB100FDC362 /* NetworkManager.swift in Sources */,
+				52630C762A5C56D10013D71F /* Model.xcdatamodeld in Sources */,
 				522626362A5090BF00DB0963 /* CharacterInfoVC.swift in Sources */,
 				522626342A508EEE00DB0963 /* CharactersTableVC.swift in Sources */,
 				5264E7E72A598E7A00FDC362 /* APITarget.swift in Sources */,
@@ -800,6 +816,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		52630C742A5C56D10013D71F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				52630C752A5C56D10013D71F /* Model.xcdatamodel */,
+			);
+			currentVersion = 52630C752A5C56D10013D71F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 522625F82A508AB800DB0963 /* Project object */;
 }

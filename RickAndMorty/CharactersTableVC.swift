@@ -46,14 +46,20 @@ class CharactersTableVC: UIViewController, NSFetchedResultsControllerDelegate {
         
         tableView.dataSource = self
 
-        // Do any additional setup after loading the view.
+        updateData()
+        
+        
+    }
+    
+    
+    
+    
+    func updateData(){
         manager.fetchCharacters { result in
             switch result {
                 
             case let .success(response):
-                
-                self.userInteractiveQueue.async {
-                    // here delete
+                self.userInteractiveQueue.async(){
                     let fetchRequest: NSFetchRequest<RaMCharacter> = RaMCharacter.fetchRequest()
                     do {
                         let objects = try PersistentContainer.shared.viewContext.fetch(fetchRequest)
@@ -74,21 +80,16 @@ class CharactersTableVC: UIViewController, NSFetchedResultsControllerDelegate {
                         character.gender = result.gender
                         character.image = result.image
                         PersistentContainer.shared.saveContext()
-                        
+
                     }
-                    self.tableView.reloadData()  // and update table view
+                    self.tableView.reloadData()
                 }
+               
             case let .failure(error):
                 print(error)
             }
         }
-        
     }
-    
-    
-    
-    
-    
     
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -126,8 +127,6 @@ extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
         
         guard let characterCell = tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell") as? CharacterTableViewCell
         else { return UITableViewCell() }
-        print(indexPath)
-        
         characterCell.setUpData(frc.object(at: indexPath))
         
         
@@ -145,8 +144,10 @@ extension CharactersTableVC: UITableViewDelegate, UITableViewDataSource {
 
 
 extension CharactersTableVC: CharacterInfoDelegate {
-    func characterInfoDidUpdate(_ character: CharacterResponseModel) {
+    func characterInfoDidUpdate() {
         // updateSomeCharacter(character)
+        updateData()
         tableView.reloadData()
+
     }
 }

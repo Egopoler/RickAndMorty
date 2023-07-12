@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol CharacterInfoDelegate: AnyObject {
-    func characterInfoDidUpdate(_ character: CharacterResponseModel)
+    func characterInfoDidUpdate()
 }
 class CharacterInfoVC: UIViewController {
     @IBOutlet weak var characterImage: UIImageView!
@@ -62,5 +62,7 @@ class CharacterInfoVC: UIViewController {
         }.resume()
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.characterInfoDidUpdate()
+    }
 }

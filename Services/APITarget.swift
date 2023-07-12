@@ -27,12 +27,12 @@ extension APITarget: TargetType {
 
     var task: Moya.Task {
         .requestParameters(parameters: [
-            "name": "morty",
-            "genger": "female",
+            "name": "rick",
+            "gender": "male",
         ], encoding: URLEncoding.default)
     }
 
     var headers: [String : String]? {
-        return ["Content-type": "application/json"]
+        return ["Content-type": "application/json", "Cache-Control": "no-cache"]
     }
 }

@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/macbookpro/Documents/forXCode/RickAndMorty/RaMCharacter+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Services/RaMCharacter+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:RickAndMorty.xcodeproj">
    </FileRef>
    <FileRef

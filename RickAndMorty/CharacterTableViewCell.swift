@@ -25,7 +25,7 @@ final class CharacterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpData(_ data: CharacterResponseModel) {
+    func setUpData(_ data: RaMCharacter) {
         self.characterName.text = data.name
     }
     
